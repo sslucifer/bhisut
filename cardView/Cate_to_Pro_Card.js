@@ -1,4 +1,4 @@
-//This file is used to implement Carousel.
+//This file is used to implement Carousel. ---NOT USED YET---
 import React from "react";
 import { View, FlatList } from "react-native";
 import CardItem from "./Cate_to_Pro_CardItem";
