@@ -1,4 +1,4 @@
-//This file is used to show the information on the Cards.
+//This file is used to show the information on the Cards. ---NOT USED YET---
 import React from "react";
 import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 
