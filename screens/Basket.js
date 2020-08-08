@@ -41,13 +41,7 @@ export default class Basket extends React.Component {
       return (
         <View style={styles.container}>
           <Header />
-          <View style={styles.container1}>
-            <Card item={this.state.pack_data[0]} />
-            <Card item={this.state.pack_data[1]} />
-          </View>
-          {/* <View style={styles.container1}> */}
-          <Card item={this.state.pack_data[2]} />
-          {/* </View> */}
+          <Card data={this.state.pack_data} />
         </View>
       );
     }

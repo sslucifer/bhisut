@@ -44,7 +44,8 @@ export default class Basket extends React.Component {
         <View style={{ flex: 1 }}>
           <StatusBar hidden={true} />
           <Header {...this.props} />
-          <ScrollView style={styles.scrollview}>
+          <Card data={this.state.product_data} />
+          {/* <ScrollView style={styles.scrollview}>
             <View style={styles.container1}>
               <Card item={this.state.product_data[0]} />
               <Card item={this.state.product_data[1]} />
@@ -99,7 +100,8 @@ export default class Basket extends React.Component {
               <Card item={this.state.product_data[20]} />
               <Card item={this.state.product_data[21]} />
             </View>
-          </ScrollView>
+            <Card item={this.state.product_data[22]} />
+          </ScrollView> */}
         </View>
       );
     }
