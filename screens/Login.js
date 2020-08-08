@@ -1,18 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import {Alert,StyleSheet,Text,View,TouchableOpacity} from "react-native";
 import { CheckBox, Button, SocialIcon, Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import WebViewExample from "./privacy_policy";
-
 import Header from "../screen_navigation/drawer_utils/Header";
+
 const AlertExample = () => {
   Alert.alert(
     "Alert Title",
@@ -54,7 +47,7 @@ export default class App extends React.Component {
 
         <View style={styles.container}>
           <Input
-            containerStyle={{ width: "65%" }}
+            containerStyle={{ width: "70%" }}
             inputContainerStyle={{ borderBottomWidth: 2 }}
             inputStyle={{ color: "black" }}
             placeholder="Mobile"
@@ -66,7 +59,7 @@ export default class App extends React.Component {
           />
 
           <Input
-            containerStyle={{ width: "65%" }}
+            containerStyle={{ width: "70%" }}
             inputContainerStyle={{ borderBottomWidth: 2 }}
             inputStyle={{ color: "black" }}
             placeholder="Password"
@@ -223,7 +216,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "20%",
+    paddingTop: "12%",
     alignItems: "center",
     backgroundColor: "white",
   },

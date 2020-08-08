@@ -1,18 +1,12 @@
 //Home Page
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  StatusBar,
-  ActivityIndicator,
-} from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
-
+import {StyleSheet,Image,View,ScrollView,StatusBar,ActivityIndicator} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import Carousel from "../carousel/Carousel";
 import { dummyData } from "../dummyData/Home_Carousel_Data";
 import Card from "../cardView/Card";
 import Header from "../screen_navigation/drawer_utils/Header";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Home extends React.Component {
   constructor() {
@@ -60,10 +54,16 @@ export default class Home extends React.Component {
           <ScrollView style={styles.scrollview}>
             {/* For infinte Carousel. */}
             <View style={styles.caro}>
-              <Carousel data={dummyData} />
+              <Carousel data={dummyData} 
+                        style={styles.carol}/>
             </View>
+            { this.pagination }
             <View style={styles.google_voice}>
-              <FontAwesome5 name="microphone" size={24} color="black" />
+              <TouchableOpacity style={styles.mic}>
+                <Icon name="microphone" 
+                      size={24} 
+                      color="red"/>
+              </TouchableOpacity>
             </View>
             {/* Section 1 */}
             <View style={styles.section}>
@@ -83,7 +83,8 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   // Carousel
   caro: {
-    backgroundColor: "steelblue",
+    paddingVertical:'2%',
+    backgroundColor: "white",
     flex: 1,
     height: "20%",
     textAlign: "center",
@@ -108,22 +109,30 @@ const styles = StyleSheet.create({
   google_voice: {
     flex: 1,
     width: "100%",
-    height: "20%",
-    alignContent: "center",
+    height: "22%",
+    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
-    paddingHorizontal: "45%",
+    backgroundColor: "transparent",
+    marginVertical:"1.8%",
+  },
+  mic: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 6,
+    backgroundColor: "#fff",
   },
   scrollview: {
-    flex: 1,
-    backgroundColor: "steelblue",
+    backgroundColor: "white",
   },
   section: {
     flex: 1,
     height: "10%",
     textAlign: "center",
     justifyContent: "center",
-    backgroundColor: "steelblue",
+    backgroundColor: "white",
   },
   textFormat: {
     marginLeft: "10%",

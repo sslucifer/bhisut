@@ -3,7 +3,7 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import CardItem from "./CardItem";
 
-const Carousel = ({ data }) => {
+const Card = ({ data }) => {
   if (data && data.length) {
     return (
       <View style={{ flex: 1, flexDirection: "row" }}>
@@ -28,7 +28,7 @@ const Carousel = ({ data }) => {
   return null;
 };
 
-export default Carousel;
+export default Card;
 
 // import * as React from "react";
 // import { Text, View, SafeAreaView, Image } from "react-native";
