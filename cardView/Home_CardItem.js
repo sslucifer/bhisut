@@ -1,4 +1,4 @@
-//This file is used to show the information on the Cards. ---NOT USED YET---
+//This file is used to show the information on the Cards.
 import React from "react";
 import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 
@@ -9,10 +9,7 @@ const CardItem = ({ item }) => {
     <View style={styles.cardView}>
       {/* Card Image */}
       <View style={{ width: "100%", height: "90%" }}>
-        <Image
-          style={styles.image}
-          source={{ uri: item.variation_set.imageUrl }}
-        />
+        <Image style={styles.image} source={{ uri: item.imgurl }} />
       </View>
       <Text style={styles.itemTitle}> {item.title}</Text>
     </View>
@@ -41,6 +38,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
+    resizeMode: "stretch",
   },
   itemTitle: {
     color: "white",

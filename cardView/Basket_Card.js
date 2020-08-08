@@ -1,7 +1,7 @@
-//This file is used to implement Carousel. ---NOT USED YET---
+//This file is used to implement Carousel.
 import React from "react";
 import { View, FlatList } from "react-native";
-import CardItem from "./Cate_to_Pro_CardItem";
+import CardItem from "./Basket_CardItem";
 
 const Card = ({ data }) => {
   if (data && data.length) {
@@ -12,7 +12,8 @@ const Card = ({ data }) => {
           data={data}
           ref={() => {}}
           keyExtractor={(item) => item.id.toString()}
-          horizontal
+          horizontal={false}
+          numColumns={2}
           snapToAlignment="center"
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
@@ -23,6 +24,9 @@ const Card = ({ data }) => {
       </View>
     );
   }
+
+  console.log("Please provide Images");
+  return null;
 };
 
 export default Card;

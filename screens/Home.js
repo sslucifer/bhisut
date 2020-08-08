@@ -10,8 +10,8 @@ import {
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import Carousel from "../carousel/Carousel";
-import { dummyData } from "../dummyData/Home_Carousel_Data";
 import Card from "../cardView/Card";
+import Card2 from "../cardView/Home_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
 
 export default class Home extends React.Component {
@@ -21,26 +21,50 @@ export default class Home extends React.Component {
       isloading: true,
       category_data: [],
       product_data: [],
+      carousel_data: [],
+      curated_list: [],
     };
   }
 
   componentDidMount() {
-    fetch("https://naturepureorganicfoods.com/be/api/categories/")
+    fetch("https://naturepureorganicfoods.com/be/api/adms/banner/list/")
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
-          category_data: responseJson.results,
+          carousel_data: responseJson.results,
         });
       })
       .then(
-        fetch("https://naturepureorganicfoods.com/be/api/products/")
+        fetch("https://naturepureorganicfoods.com/be/api/categories/")
           .then((response) => response.json())
           .then((responseJson) => {
             this.setState({
-              isloading: false,
-              product_data: responseJson.results,
+              category_data: responseJson.results,
             });
           })
+          .then(
+            fetch("https://naturepureorganicfoods.com/be/api/products/")
+              .then((response) => response.json())
+              .then((responseJson) => {
+                this.setState({
+                  product_data: responseJson.results,
+                });
+              })
+              .then(
+                fetch(
+                  "https://naturepureorganicfoods.com/be/api/adms/yt/curatedl/list/"
+                )
+                  .then((response) => response.json())
+                  .then((responseJson) => {
+                    this.setState({
+                      isloading: false,
+                      curated_list: responseJson.results,
+                    });
+                  })
+                  .catch((error) => console.log(error))
+              )
+              .catch((error) => console.log(error))
+          )
           .catch((error) => console.log(error))
       )
       .catch((error) => console.log(error));
@@ -60,7 +84,7 @@ export default class Home extends React.Component {
           <ScrollView style={styles.scrollview}>
             {/* For infinte Carousel. */}
             <View style={styles.caro}>
-              <Carousel data={dummyData} />
+              <Carousel data={this.state.carousel_data} />
             </View>
             <View style={styles.google_voice}>
               <FontAwesome5 name="microphone" size={24} color="black" />
@@ -73,7 +97,45 @@ export default class Home extends React.Component {
             <View style={styles.section}>
               <Card data={this.state.product_data} />
             </View>
+            {/* Section 3 */}
+            <View style={styles.section}>
+              <Card2 data={this.state.curated_list} />
+            </View>
           </ScrollView>
+          {/* <View
+            style={{ height: "8%", width: "100%", backgroundColor: "white" }}
+          >
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  backgroundColor: "black",
+                }}
+              ></View>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  backgroundColor: "steelblue",
+                }}
+              ></View>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  backgroundColor: "red",
+                }}
+              ></View>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  backgroundColor: "green",
+                }}
+              ></View>
+            </View>
+          </View> */}
         </View>
       );
     }
@@ -83,11 +145,12 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   // Carousel
   caro: {
-    backgroundColor: "steelblue",
     flex: 1,
-    height: "20%",
+    backgroundColor: "steelblue",
+    height: "90%",
     textAlign: "center",
     alignItems: "center",
+    alignContent: "center",
     justifyContent: "center",
   },
   container: {
@@ -106,13 +169,12 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   google_voice: {
-    flex: 1,
     width: "100%",
-    height: "20%",
+    height: "5%",
     alignContent: "center",
+    alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    paddingHorizontal: "45%",
   },
   scrollview: {
     flex: 1,

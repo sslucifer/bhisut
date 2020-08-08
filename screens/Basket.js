@@ -1,26 +1,50 @@
+//This is for Basket Category.
+//Price tag need to be added.
 import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
+import Card from "../cardView/Basket_Card";
+import Header from "../screen_navigation/drawer_utils/Header";
 
 export default class Basket extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isloading: true,
+      pack_data: [],
+    };
+  }
+  componentDidMount() {
+    fetch("https://naturepureorganicfoods.com/be/api/products/baskets/")
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          isloading: false,
+          pack_data: responseJson.results,
+        });
+      })
+      .catch((error) => console.log(error));
+  }
   render() {
-    return (
-      <ScrollView
-        style={{
-          flex: 1,
-          alignContent: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
+    if (this.state.isloading) {
+      return (
         <View style={styles.container}>
-          <Text
-            style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}
-          >
-            Basket
-          </Text>
+          <ActivityIndicator size="large" animating />
         </View>
-      </ScrollView>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Header />
+          <Card data={this.state.pack_data} />
+        </View>
+      );
+    }
   }
 }
 const styles = StyleSheet.create({
@@ -28,7 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: "center",
     justifyContent: "center",
-    width: "100%",
-    height: "100%",
+  },
+  container1: {
+    flex: 1,
+    alignContent: "center",
+    justifyContent: "center",
+    flexDirection: "row",
   },
 });

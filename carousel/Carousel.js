@@ -35,61 +35,56 @@ const Carousel = ({ data }) => {
     infiniteScroll(dataList);
   });
 
-  if (data && data.length) {
-    return (
-      <View>
-        {/* Storing the Images in form of FlatList/ScrollView in horizontal direction. */}
-        <FlatList
-          data={data}
-          ref={(flatList) => {
-            this.flatList = flatList;
-          }}
-          keyExtractor={(item, index) => "key" + index}
-          horizontal
-          pagingEnabled
-          scrollEnabled
-          snapToAlignment="center"
-          scrollEventThrottle={16}
-          decelerationRate={"fast"}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => {
-            return <CarouselItem item={item} />;
-          }}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: false }
-          )}
-        />
+  return (
+    <View>
+      {/* Storing the Images in form of FlatList/ScrollView in horizontal direction. */}
+      <FlatList
+        data={data}
+        ref={(flatList) => {
+          this.flatList = flatList;
+        }}
+        keyExtractor={(item, index) => "key" + index}
+        horizontal
+        pagingEnabled
+        scrollEnabled
+        snapToAlignment="center"
+        scrollEventThrottle={16}
+        decelerationRate={"fast"}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => {
+          return <CarouselItem item={item} />;
+        }}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: false }
+        )}
+      />
 
-        {/* Dot View at bottom of the Carousel.*/}
-        <View style={styles.dotView}>
-          {data.map((_, i) => {
-            let opacity = position.interpolate({
-              inputRange: [i - 1, i, i + 1],
-              outputRange: [0.3, 1, 0.3],
-              extrapolate: "clamp",
-            });
-            return (
-              <Animated.View
-                key={i}
-                style={{
-                  opacity,
-                  height: 10,
-                  width: 10,
-                  backgroundColor: "#595959",
-                  margin: 5,
-                  borderRadius: 5,
-                }}
-              />
-            );
-          })}
-        </View>
+      {/* Dot View at bottom of the Carousel.*/}
+      <View style={styles.dotView}>
+        {data.map((_, i) => {
+          let opacity = position.interpolate({
+            inputRange: [i - 1, i, i + 1],
+            outputRange: [0.3, 1, 0.3],
+            extrapolate: "clamp",
+          });
+          return (
+            <Animated.View
+              key={i}
+              style={{
+                opacity,
+                height: 10,
+                width: 10,
+                backgroundColor: "#595959",
+                margin: 5,
+                borderRadius: 5,
+              }}
+            />
+          );
+        })}
       </View>
-    );
-  }
-
-  console.log("Please provide Images");
-  return null;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
