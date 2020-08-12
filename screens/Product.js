@@ -12,6 +12,9 @@ import {
 } from "react-native";
 import Card from "../cardView/Product_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import { Searchbar } from 'react-native-paper';
 
 export default class Basket extends React.Component {
   constructor() {
@@ -21,6 +24,12 @@ export default class Basket extends React.Component {
       product_data: [],
     };
   }
+
+  // const [searchQuery, setSearchQuery] = React.useState('');
+
+  // const onChangeSearch = query => setSearchQuery(query);
+
+
   componentDidMount() {
     fetch("https://naturepureorganicfoods.com/be/api/products/")
       .then((response) => response.json())
@@ -44,6 +53,18 @@ export default class Basket extends React.Component {
         <View style={{ flex: 1 }}>
           <StatusBar hidden={true} />
           <Header {...this.props} />
+          <Searchbar
+      placeholder="Search"
+      // onChangeText={onChangeSearch}
+      // value={searchQuery}
+    />
+          <View style={styles.google_voice}>
+              <TouchableOpacity style={styles.mic}>
+                <Icon name="microphone" 
+                      size={24} 
+                      color="red"/>
+              </TouchableOpacity>
+            </View>
           <Card data={this.state.product_data} />
           {/* <ScrollView style={styles.scrollview}>
             <View style={styles.container1}>
@@ -113,14 +134,25 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
-  container1: {
-    flex: 1,
-    alignContent: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
   scrollview: {
     flex: 1,
     backgroundColor: "steelblue",
+  },
+  google_voice: {
+    width: "100%",
+    height: "8%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    marginVertical: "0.6%"
+  },
+  mic: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 2,
+    backgroundColor: "#ffffff",
   },
 });

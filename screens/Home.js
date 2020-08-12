@@ -1,18 +1,12 @@
 //Home Page
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  StatusBar,
-  ActivityIndicator,
-} from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
-
+import { StyleSheet,View,ScrollView,StatusBar,ActivityIndicator } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import Carousel from "../carousel/Carousel";
 import Card from "../cardView/Card";
 import Card2 from "../cardView/Home_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Home extends React.Component {
   constructor() {
@@ -87,7 +81,11 @@ export default class Home extends React.Component {
               <Carousel data={this.state.carousel_data} />
             </View>
             <View style={styles.google_voice}>
-              <FontAwesome5 name="microphone" size={24} color="black" />
+              <TouchableOpacity style={styles.mic}>
+                <Icon name="microphone" 
+                      size={24} 
+                      color="red"/>
+              </TouchableOpacity>
             </View>
             {/* Section 1 */}
             <View style={styles.section}>
@@ -102,40 +100,6 @@ export default class Home extends React.Component {
               <Card2 data={this.state.curated_list} />
             </View>
           </ScrollView>
-          {/* <View
-            style={{ height: "8%", width: "100%", backgroundColor: "white" }}
-          >
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <View
-                style={{
-                  flex: 1,
-                  height: "100%",
-                  backgroundColor: "black",
-                }}
-              ></View>
-              <View
-                style={{
-                  flex: 1,
-                  height: "100%",
-                  backgroundColor: "steelblue",
-                }}
-              ></View>
-              <View
-                style={{
-                  flex: 1,
-                  height: "100%",
-                  backgroundColor: "red",
-                }}
-              ></View>
-              <View
-                style={{
-                  flex: 1,
-                  height: "100%",
-                  backgroundColor: "green",
-                }}
-              ></View>
-            </View>
-          </View> */}
         </View>
       );
     }
@@ -145,12 +109,12 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   // Carousel
   caro: {
+    paddingVertical: '0.5%',
     flex: 1,
-    backgroundColor: "steelblue",
-    height: "90%",
+    backgroundColor: "transparent",
+    height: "20%",
     textAlign: "center",
     alignItems: "center",
-    alignContent: "center",
     justifyContent: "center",
   },
   container: {
@@ -169,23 +133,32 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   google_voice: {
+    flex: 1,
     width: "100%",
-    height: "5%",
-    alignContent: "center",
+    height: "22%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
+    marginVertical: "0.6%"
+  },
+  mic: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 2,
+    backgroundColor: "#ffffff",
   },
   scrollview: {
-    flex: 1,
-    backgroundColor: "steelblue",
+    backgroundColor: "white",
   },
   section: {
     flex: 1,
     height: "10%",
     textAlign: "center",
     justifyContent: "center",
-    backgroundColor: "steelblue",
+    backgroundColor: "white",
   },
   textFormat: {
     marginLeft: "10%",

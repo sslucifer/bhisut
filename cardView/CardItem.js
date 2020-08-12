@@ -8,7 +8,7 @@ const CardItem = ({ item }) => {
   return (
     <View style={styles.cardView}>
       {/* Card Image */}
-      <View style={{ width: "100%", height: "90%" }}>
+      <View style={{ width: "100%", height: "90%", padding: "2%" }}>
         <Image style={styles.image} source={{ uri: item.image }} />
       </View>
       <Text style={styles.itemTitle}> {item.title}</Text>
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
   cardView: {
     flex: 1,
     width: width - 150,
-    height: height / 3,
-    backgroundColor: "steelblue",
+    height: height / 3.2,
+    backgroundColor: "#eeeeee",
     margin: 10,
     borderRadius: 10,
     shadowColor: "#000",
@@ -30,23 +30,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
   },
-
-  textView: {
-    textAlign: "center",
-  },
   image: {
     width: "100%",
     height: "100%",
     borderRadius: 10,
   },
   itemTitle: {
-    color: "white",
+    color: "#607d8b",
     fontSize: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0.8, height: 0.8 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
-    marginBottom: 5,
+    marginVertical: 1,
     fontWeight: "bold",
     elevation: 5,
     textAlign: "center",

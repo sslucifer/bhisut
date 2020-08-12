@@ -5,7 +5,7 @@ import CardItem from "./Home_CardItem";
 
 const Card = ({ data }) => {
   return (
-    <View style={{ flex: 1, flexDirection: "row" }}>
+    <View>
       {/* Storing the Images in form of FlatList/ScrollView in horizontal direction. */}
       <FlatList
         data={data}

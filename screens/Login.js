@@ -1,16 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { Alert,StyleSheet,Text,View,TouchableOpacity,TextInput } from "react-native";
 import { CheckBox, Button, SocialIcon, Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import WebViewExample from "./privacy_policy";
+import ModalExample from "./privacy_policy";
+
 
 import Header from "../screen_navigation/drawer_utils/Header";
 const AlertExample = () => {
@@ -30,62 +24,104 @@ const AlertExample = () => {
 };
 
 export default class App extends React.Component {
+  
   constructor() {
     super();
     this.state = {
-      icon: "eye-slash",
-      password: true,
+      // icon: "eye-slash",
+      // password: true,
       checked: false,
+      phone: '',
+      phoneError: '',
+      otp: '',
+      otpError: '',
     };
   }
 
-  change() {
-    this.setState((prevState) => ({
-      icon: prevState.icon == "eye" ? "eye-slash" : "eye",
-      password: !prevState.password,
-    }));
+  pvaliDation()
+  {
+    if(this.state.phone=='')
+    {
+      this.setState({phoneError:"This field cannot be Empty."})
+    }
+    else
+    {
+      this.setState({phoneError:''})
+    }
   }
+
+  ovaliDation()
+  {
+    if(this.state.otp=='')
+    {
+      this.setState({otpError:"This field cannot be Empty."})
+    }
+    else
+    {
+      this.setState({otpError:''})
+    }
+  }
+
+  // buttonActive()
+  // {
+  //   if(this.state.phone=='')
+  //   {
+  //     return true
+  //   }
+  //   else
+  //   {
+  //     return false
+  //   }
+  // }
+
+  // change() {
+  //   this.setState((prevState) => ({
+  //     icon: prevState.icon == "eye" ? "eye-slash" : "eye",
+  //     password: !prevState.password,
+  //   }));
+  // }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Header {...this.props} />
-        {/* <Image source={require("../assets/fire.jpg")} style={styles.image} /> */}
 
         <View style={styles.container}>
-          <Input
-            containerStyle={{ width: "65%" }}
-            inputContainerStyle={{ borderBottomWidth: 2 }}
-            inputStyle={{ color: "black" }}
-            placeholder="Mobile"
-            placeholderTextColor="#8e8e8e"
-            underlineColorAndroid="transparent"
-            keyboardType="phone-pad"
-            autoCapitalize="none"
-            rightIcon={<Icon name="mobile-alt" size={18} color="black" />}
-          />
+          <View style={styles.inputCon}>
+            <TextInput
+              style={{flex:1, width: "70%" }}
+              inputStyle={{ color: "black" }}
+              placeholder="Mobile"
+              placeholderTextColor="#8e8e8e"
+              underlineColorAndroid="transparent"
+              keyboardType="phone-pad"
+              maxLength={10}
+              onChangeText={(number) => {this.setState({ phone: number });this.setState({donep:false});}}
+              onBlur={() => this.pvaliDation()} />
+            <Icon name="mobile-alt" 
+                  size={18}
+                  color="black" />
+          </View>
 
-          <Input
-            containerStyle={{ width: "65%" }}
-            inputContainerStyle={{ borderBottomWidth: 2 }}
-            inputStyle={{ color: "black" }}
-            placeholder="Password"
-            placeholderTextColor="#8e8e8e"
-            underlineColorAndroid="transparent"
-            keyboardType="default"
-            secureTextEntry={this.state.password}
-            autoCapitalize="none"
-            rightIcon={
-              <Icon
-                name={this.state.icon}
-                onPress={() => this.change()}
-                size={18}
-                solid
-                color="black"
-              />
-            }
-          />
+          <Text style={{color:"red"}}>{this.state.phoneError}</Text>
 
+          <View style={styles.inputCon}>
+            <TextInput
+              style={{flex:1, width: "70%" }}
+              inputStyle={{ color: "black" }}
+              placeholder="OTP"
+              placeholderTextColor="#8e8e8e"
+              underlineColorAndroid="transparent"
+              keyboardType="number-pad"
+              onChangeText={(number) => {this.setState({ otp: number });this.setState({doneo:false})}}
+              onBlur={() => this.ovaliDation()} />
+            <Icon name="key" 
+                  size={18}
+                  color="black" />
+          </View>
+
+          <Text style={{color:"red"}}>{this.state.otpError}</Text>
+          
           <Button
             buttonStyle={{
               backgroundColor: "gold",
@@ -196,8 +232,9 @@ export default class App extends React.Component {
             />
 
             <View style={{ flexDirection: "row", marginTop: 10 }}>
-              <WebViewExample />
-
+              
+              <ModalExample />
+              
               <Text style={{ fontSize: 18, color: "black" }}>
                 {" "}
                 to see Privacy Policy.
@@ -223,7 +260,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "20%",
+    paddingTop: "12%",
     alignItems: "center",
     backgroundColor: "white",
   },
@@ -239,6 +276,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  inputCon: {
+    width:"70%", 
+    flexDirection: 'row', 
+    borderBottomWidth: 1,
+    marginVertical: "3%"
   },
   image: {
     maxHeight: "12%",
