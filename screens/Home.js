@@ -1,10 +1,10 @@
 //Home Page
 import React from "react";
-import {StyleSheet,Image,View,ScrollView,StatusBar,ActivityIndicator} from "react-native";
+import { StyleSheet,View,ScrollView,StatusBar,ActivityIndicator } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Carousel from "../carousel/Carousel";
-import { dummyData } from "../dummyData/Home_Carousel_Data";
 import Card from "../cardView/Card";
+import Card2 from "../cardView/Home_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -15,26 +15,50 @@ export default class Home extends React.Component {
       isloading: true,
       category_data: [],
       product_data: [],
+      carousel_data: [],
+      curated_list: [],
     };
   }
 
   componentDidMount() {
-    fetch("https://naturepureorganicfoods.com/be/api/categories/")
+    fetch("https://naturepureorganicfoods.com/be/api/adms/banner/list/")
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
-          category_data: responseJson.results,
+          carousel_data: responseJson.results,
         });
       })
       .then(
-        fetch("https://naturepureorganicfoods.com/be/api/products/")
+        fetch("https://naturepureorganicfoods.com/be/api/categories/")
           .then((response) => response.json())
           .then((responseJson) => {
             this.setState({
-              isloading: false,
-              product_data: responseJson.results,
+              category_data: responseJson.results,
             });
           })
+          .then(
+            fetch("https://naturepureorganicfoods.com/be/api/products/")
+              .then((response) => response.json())
+              .then((responseJson) => {
+                this.setState({
+                  product_data: responseJson.results,
+                });
+              })
+              .then(
+                fetch(
+                  "https://naturepureorganicfoods.com/be/api/adms/yt/curatedl/list/"
+                )
+                  .then((response) => response.json())
+                  .then((responseJson) => {
+                    this.setState({
+                      isloading: false,
+                      curated_list: responseJson.results,
+                    });
+                  })
+                  .catch((error) => console.log(error))
+              )
+              .catch((error) => console.log(error))
+          )
           .catch((error) => console.log(error))
       )
       .catch((error) => console.log(error));
@@ -54,10 +78,8 @@ export default class Home extends React.Component {
           <ScrollView style={styles.scrollview}>
             {/* For infinte Carousel. */}
             <View style={styles.caro}>
-              <Carousel data={dummyData} 
-                        style={styles.carol}/>
+              <Carousel data={this.state.carousel_data} />
             </View>
-            { this.pagination }
             <View style={styles.google_voice}>
               <TouchableOpacity style={styles.mic}>
                 <Icon name="microphone" 
@@ -73,6 +95,10 @@ export default class Home extends React.Component {
             <View style={styles.section}>
               <Card data={this.state.product_data} />
             </View>
+            {/* Section 3 */}
+            <View style={styles.section}>
+              <Card2 data={this.state.curated_list} />
+            </View>
           </ScrollView>
         </View>
       );
@@ -83,9 +109,9 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   // Carousel
   caro: {
-    paddingVertical:'2%',
-    backgroundColor: "white",
+    paddingVertical: '0.5%',
     flex: 1,
+    backgroundColor: "transparent",
     height: "20%",
     textAlign: "center",
     alignItems: "center",
@@ -113,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
-    marginVertical:"1.8%",
+    marginVertical: "0.6%"
   },
   mic: {
     width: 50,
@@ -121,8 +147,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 6,
-    backgroundColor: "#fff",
+    elevation: 2,
+    backgroundColor: "#ffffff",
   },
   scrollview: {
     backgroundColor: "white",

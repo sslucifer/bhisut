@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { View, TouchableOpacity, ImageBackground } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-
 export default class HeaderNavigationBar extends Component {
   render() {
     return (
@@ -29,7 +28,7 @@ export default class HeaderNavigationBar extends Component {
             onPress={() => this.props.navigation.openDrawer()}
             style={{ paddingHorizontal: 20 }}
           >
-            <Icon name="bars" size={32} color="white"/>
+            <Icon name="bars" size={30} color="white"/>
           </TouchableOpacity>
         </ImageBackground>
       </View>

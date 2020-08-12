@@ -17,22 +17,24 @@ const styles = StyleSheet.create({
   cardView: {
     flex: 1,
     width: width - 20,
-    height: "100%",
-    backgroundColor: "white",
+    height: height / 3,
+    backgroundColor: "#eeeeee",
     margin: 10,
+    padding: 3,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0.5, height: 0.5 },
     shadowOpacity: 0.5,
     shadowRadius: 3,
     elevation: 5,
-    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center"
   },
   image: {
     width: "100%",
     height: "100%",
     borderRadius: 10,
-    resizeMode: "stretch",
+    //resizeMode: "cover",
   },
 });
 

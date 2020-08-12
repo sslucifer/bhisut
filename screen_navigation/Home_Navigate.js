@@ -6,7 +6,7 @@ import { createMaterialBottomTabNavigator } from "react-navigation-material-bott
 
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Home from "../screen_navigation/Drawer_Navigator";
@@ -28,8 +28,8 @@ const TabNavigator = createMaterialBottomTabNavigator(
             <FontAwesome5 name="home" size={26} color={tintColor} />
           </View>
         ),
-        activeColor: "#ffffff",
-        inactiveColor: "#aeaeae",
+        activeColor: "#2cf539",
+        inactiveColor: "white",
         barStyle: { backgroundColor: "#a8701d" },
       },
     },
@@ -47,8 +47,8 @@ const TabNavigator = createMaterialBottomTabNavigator(
             />
           </View>
         ),
-        activeColor: "#ffffff",
-        inactiveColor: "#aeaeae",
+        activeColor: "#2cf539",
+        inactiveColor: "white",
         barStyle: { backgroundColor: "#a8701d" },
       },
     },
@@ -61,8 +61,8 @@ const TabNavigator = createMaterialBottomTabNavigator(
             <Icon name="shopping-cart" size={26} color={tintColor} />
           </View>
         ),
-        activeColor: "#ffffff",
-        inactiveColor: "#aeaeae",
+        activeColor: "#2cf539",
+        inactiveColor: "white",
         barStyle: { backgroundColor: "#a8701d" },
       },
     },
@@ -72,11 +72,11 @@ const TabNavigator = createMaterialBottomTabNavigator(
         tabBarLabel: "Basket",
         tabBarIcon: ({ tintColor }) => (
           <View>
-            <Fontisto name="shopping-basket" size={26} color={tintColor} />
+            <Fontisto name="shopping-basket" size={25} color={tintColor} />
           </View>
         ),
-        activeColor: "#ffffff",
-        inactiveColor: "#aeaeae",
+        activeColor: "#2cf539",
+        inactiveColor: "white",
         barStyle: { backgroundColor: "#a8701d" },
       },
     },
@@ -86,11 +86,11 @@ const TabNavigator = createMaterialBottomTabNavigator(
         tabBarLabel: "Content",
         tabBarIcon: ({ tintColor }) => (
           <View>
-            <FontAwesome5 name="play-circle" size={26} color={tintColor} />
+            <FontAwesome5 name="play-circle" size={25} color={tintColor} />
           </View>
         ),
-        activeColor: "#ffffff",
-        inactiveColor: "#aeaeae",
+        activeColor: "#2cf539",
+        inactiveColor: "white",
         barStyle: { backgroundColor: "#a8701d" },
       },
     },
