@@ -19,7 +19,7 @@ export default class Content extends React.Component {
             <Text
               style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}
             >
-              Content
+              Product Details
             </Text>
           </View>
         </ScrollView>

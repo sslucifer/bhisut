@@ -1,17 +1,26 @@
 //This file is used to show the information on the Cards.
 import React from "react";
-import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-const CardItem = ({ item }) => {
+const CardItem = ({ item, navigation }) => {
   return (
     <View style={styles.cardView}>
       {/* Card Image */}
-      <View style={{ width: "100%", height: "90%", padding: "2%" }}>
-        <Image style={styles.image} source={{ uri: item.image }} />
-      </View>
-      <Text style={styles.itemTitle}> {item.title}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Product_Detail")}>
+        <View style={{ width: "100%", height: "90%", padding: "2%" }}>
+          <Image style={styles.image} source={{ uri: item.image }} />
+        </View>
+        <Text style={styles.itemTitle}> {item.title}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

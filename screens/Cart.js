@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import Login from "./Login";
 export default class Cart extends React.Component {
   render() {
     return (
-      <Login />
+      <SafeAreaView style={{ flex: 1 }}>
+        <Login />
+      </SafeAreaView>
       // <ScrollView
       //   style={{
       //     flex: 1,

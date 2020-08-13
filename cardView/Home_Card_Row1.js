@@ -1,9 +1,9 @@
 //This file is used to implement Card for Home Section 1 & 2.
 import React from "react";
 import { View, FlatList } from "react-native";
-import CardItem from "./CardItem";
+import CardItem from "./Home_CardItem_Row1";
 
-const Card = ({ data }) => {
+const Card = ({ data, navigation }) => {
   return (
     <View style={{ flex: 1, flexDirection: "row" }}>
       {/* Storing the Images in form of FlatList/ScrollView in horizontal direction. */}
@@ -16,7 +16,7 @@ const Card = ({ data }) => {
         decelerationRate={"fast"}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
-          return <CardItem item={item} />;
+          return <CardItem item={item} navigation={navigation} />;
         }}
       />
     </View>

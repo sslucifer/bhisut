@@ -1,6 +1,6 @@
 //This file is used to implement Carousel.
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, ToastAndroid } from "react-native";
 import CardItem from "./Product_CardItem";
 
 const Card = ({ data }) => {
@@ -23,10 +23,16 @@ const Card = ({ data }) => {
         />
       </View>
     );
+  } else {
+    ToastAndroid.showWithGravityAndOffset(
+      "No Result Found",
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    );
+    return null;
   }
-
-  console.log("Please provide Images");
-  return null;
 };
 
 export default Card;

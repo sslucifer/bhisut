@@ -1,6 +1,7 @@
 import React from "react";
 import * as SplashScreen from "expo-splash-screen";
-import Home_Nav from "./screen_navigation/Home_Navigate";
+
+import Drawer_Nav from "./screen_navigation/Drawer_Navigator";
 
 //Here loading page is refered as splashscreen in react-native.
 SplashScreen.preventAutoHideAsync();
@@ -13,6 +14,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <Home_Nav />;
+    return <Drawer_Nav />;
   }
 }
