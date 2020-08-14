@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { WebView } from "react-native-webview";
 import YoutubePlayer from "react-native-youtube-iframe";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
