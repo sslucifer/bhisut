@@ -8,6 +8,8 @@ import {
   ScrollView,
   ActivityIndicator,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import Card from "../cardView/Basket_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
 
@@ -33,16 +35,20 @@ export default class Basket extends React.Component {
   render() {
     if (this.state.isloading) {
       return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" animating />
-        </View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <ActivityIndicator size="large" animating />
+          </View>
+        </SafeAreaView>
       );
     } else {
       return (
-        <View style={styles.container}>
-          <Header />
-          <Card data={this.state.pack_data} />
-        </View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <Header />
+            <Card data={this.state.pack_data} />
+          </View>
+        </SafeAreaView>
       );
     }
   }

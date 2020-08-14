@@ -3,23 +3,98 @@ import React from "react";
 import { View } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-
+import { createStackNavigator } from "react-navigation-stack";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Home from "../screens/Home";
 
-import Home from "../screen_navigation/Drawer_Navigator";
 import Product from "../screens/Product";
 import Cart from "../screens/Cart";
 import Basket from "../screens/Basket";
 import Content from "../screens/Content";
 
+import Category_Detail from "../screens/Category_Detail";
+import Product_Detail from "../screens/Product_Detail";
+import Play_YT from "../screens/Play_YT";
+
+const HomeScreenStack = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Category_Detail: {
+    screen: Category_Detail,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Product_Detail: {
+    screen: Product_Detail,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Play_YT: {
+    screen: Play_YT,
+  },
+});
+
+const ProductScreenStack = createStackNavigator({
+  Product: {
+    screen: Product,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Product_Detail: {
+    screen: Product_Detail,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
+
+const CartScreenStack = createStackNavigator({
+  Cart: {
+    screen: Cart,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
+
+const BasketScreenStack = createStackNavigator({
+  Basket: {
+    screen: Basket,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Product_Detail: {
+    screen: Product_Detail,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
+
+const ContentScreenStack = createStackNavigator({
+  Content: {
+    screen: Content,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+});
 const TabNavigator = createMaterialBottomTabNavigator(
   {
     //Home is a variable name used for navigation.
     Home: {
-      screen: Home, //It is referencing to the Home Page.
+      screen: createAppContainer(HomeScreenStack), //It is refering to the Home Page.
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
@@ -35,7 +110,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     },
     //Product is a variable name used for navigation.
     Product: {
-      screen: Product, //It is referencing to the LiveTv Page.
+      screen: createAppContainer(ProductScreenStack), //It is referencing to the LiveTv Page.
       navigationOptions: {
         tabBarLabel: "Product",
         tabBarIcon: ({ tintColor }) => (
@@ -53,7 +128,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
       },
     },
     Cart: {
-      screen: Cart,
+      screen: createAppContainer(CartScreenStack),
       navigationOptions: {
         tabBarLabel: "Cart",
         tabBarIcon: ({ tintColor }) => (
@@ -67,7 +142,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
       },
     },
     Basket: {
-      screen: Basket,
+      screen: createAppContainer(BasketScreenStack),
       navigationOptions: {
         tabBarLabel: "Basket",
         tabBarIcon: ({ tintColor }) => (
@@ -81,7 +156,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
       },
     },
     Content: {
-      screen: Content,
+      screen: createAppContainer(ContentScreenStack),
       navigationOptions: {
         tabBarLabel: "Content",
         tabBarIcon: ({ tintColor }) => (

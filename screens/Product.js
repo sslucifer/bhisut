@@ -1,5 +1,5 @@
 //This is for Product Category.
-//Search Bar and google voice mic not added not added.
+//Search Bar and google voice mic added.
 //Price tag need to be added.
 import React from "react";
 import {
@@ -10,11 +10,13 @@ import {
   ActivityIndicator,
   StatusBar,
 } from "react-native";
-import Card from "../cardView/Product_Card";
-import Header from "../screen_navigation/drawer_utils/Header";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { Searchbar } from 'react-native-paper';
+import { Searchbar } from "react-native-paper";
+
+import Card from "../cardView/Product_Card";
+import Header from "../screen_navigation/drawer_utils/Header";
 
 export default class Basket extends React.Component {
   constructor() {
@@ -28,7 +30,6 @@ export default class Basket extends React.Component {
   // const [searchQuery, setSearchQuery] = React.useState('');
 
   // const onChangeSearch = query => setSearchQuery(query);
-
 
   componentDidMount() {
     fetch("https://naturepureorganicfoods.com/be/api/products/")
@@ -44,29 +45,30 @@ export default class Basket extends React.Component {
   render() {
     if (this.state.isloading) {
       return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" animating />
-        </View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <ActivityIndicator size="large" animating />
+          </View>
+        </SafeAreaView>
       );
     } else {
       return (
-        <View style={{ flex: 1 }}>
-          <StatusBar hidden={true} />
-          <Header {...this.props} />
-          <Searchbar
-      placeholder="Search"
-      // onChangeText={onChangeSearch}
-      // value={searchQuery}
-    />
-          <View style={styles.google_voice}>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <StatusBar hidden={true} />
+            <Header {...this.props} />
+            <Searchbar
+              placeholder="Search"
+              // onChangeText={onChangeSearch}
+              // value={searchQuery}
+            />
+            <View style={styles.google_voice}>
               <TouchableOpacity style={styles.mic}>
-                <Icon name="microphone" 
-                      size={24} 
-                      color="red"/>
+                <Icon name="microphone" size={24} color="red" />
               </TouchableOpacity>
             </View>
-          <Card data={this.state.product_data} />
-          {/* <ScrollView style={styles.scrollview}>
+            <Card data={this.state.product_data} />
+            {/* <ScrollView style={styles.scrollview}>
             <View style={styles.container1}>
               <Card item={this.state.product_data[0]} />
               <Card item={this.state.product_data[1]} />
@@ -123,7 +125,8 @@ export default class Basket extends React.Component {
             </View>
             <Card item={this.state.product_data[22]} />
           </ScrollView> */}
-        </View>
+          </View>
+        </SafeAreaView>
       );
     }
   }
@@ -134,17 +137,14 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
-  scrollview: {
-    flex: 1,
-    backgroundColor: "steelblue",
-  },
+
   google_voice: {
     width: "100%",
     height: "8%",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
-    marginVertical: "0.6%"
+    marginVertical: "0.6%",
   },
   mic: {
     width: 50,

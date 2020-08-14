@@ -1,13 +1,13 @@
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
 
-import Home from "../screens/Home";
 import Login from "../screens/Login";
+import Home_Navigate from "./Home_Navigate";
 
-var drawer = createDrawerNavigator(
+const drawer = createDrawerNavigator(
   {
     Home: {
-      screen: Home,
+      screen: Home_Navigate,
     },
     Sign_In: {
       screen: Login,

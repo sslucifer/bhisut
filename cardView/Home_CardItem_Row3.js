@@ -1,19 +1,32 @@
 //This file is used to show the information on the Cards.
 import React from "react";
-import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-const CardItem = ({ item }) => {
+const CardItem = ({ data, item, navigation }) => {
   return (
     <View style={styles.cardView}>
       {/* Card Image */}
-      <View style={{ width: "100%", height: "80%", padding: "1%" }}>
-        <Image style={styles.image} source={{ uri: item.imgurl }} />
-      </View>
-      <View style={styles.textBx}>
-        <Text style={styles.itemTitle}> {item.title}</Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Play_YT", { data: data, videoid: item.videoid });
+        }}
+      >
+        <View style={{ width: "100%", height: "80%", padding: "1%" }}>
+          <Image style={styles.image} source={{ uri: item.imgurl }} />
+        </View>
+        <View style={styles.textBx}>
+          <Text style={styles.itemTitle}> {item.title}</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -36,12 +49,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   textBx: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   itemTitle: {
     color: "#607d8b",

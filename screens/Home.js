@@ -1,16 +1,25 @@
 //Home Page
 import React from "react";
-import { StyleSheet,View,ScrollView,StatusBar,ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  StatusBar,
+  ActivityIndicator,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import Carousel from "../carousel/Carousel";
-import Card from "../cardView/Card";
-import Card2 from "../cardView/Home_Card";
-import Header from "../screen_navigation/drawer_utils/Header";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import Carousel from "../carousel/Carousel";
+import Card1 from "../cardView/Home_Card_Row1";
+import Card2 from "../cardView/Home_Card_Row2";
+import Card3 from "../cardView/Home_Card_Row3";
+import Header from "../screen_navigation/drawer_utils/Header";
+
 export default class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isloading: true,
       category_data: [],
@@ -66,41 +75,52 @@ export default class Home extends React.Component {
   render() {
     if (this.state.isloading) {
       return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" animating />
-        </View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <ActivityIndicator size="large" animating />
+          </View>
+        </SafeAreaView>
       );
     } else {
       return (
-        <View style={{ flex: 1 }}>
-          <StatusBar hidden={true} />
-          <Header {...this.props} />
-          <ScrollView style={styles.scrollview}>
-            {/* For infinte Carousel. */}
-            <View style={styles.caro}>
-              <Carousel data={this.state.carousel_data} />
-            </View>
-            <View style={styles.google_voice}>
-              <TouchableOpacity style={styles.mic}>
-                <Icon name="microphone" 
-                      size={24} 
-                      color="red"/>
-              </TouchableOpacity>
-            </View>
-            {/* Section 1 */}
-            <View style={styles.section}>
-              <Card data={this.state.category_data} />
-            </View>
-            {/* Section 2 */}
-            <View style={styles.section}>
-              <Card data={this.state.product_data} />
-            </View>
-            {/* Section 3 */}
-            <View style={styles.section}>
-              <Card2 data={this.state.curated_list} />
-            </View>
-          </ScrollView>
-        </View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <StatusBar hidden={true} />
+            <Header {...this.props} />
+            <ScrollView style={styles.scrollview}>
+              {/* For infinte Carousel. */}
+              <View style={styles.caro}>
+                <Carousel data={this.state.carousel_data} />
+              </View>
+              <View style={styles.google_voice}>
+                <TouchableOpacity style={styles.mic}>
+                  <Icon name="microphone" size={24} color="red" />
+                </TouchableOpacity>
+              </View>
+              {/* Section 1 */}
+              <View style={styles.section}>
+                <Card1
+                  data={this.state.category_data}
+                  navigation={this.props.navigation}
+                />
+              </View>
+              {/* Section 2 */}
+              <View style={styles.section}>
+                <Card2
+                  data={this.state.product_data}
+                  navigation={this.props.navigation}
+                />
+              </View>
+              {/* Section 3 */}
+              <View style={styles.section}>
+                <Card3
+                  data={this.state.curated_list}
+                  navigation={this.props.navigation}
+                />
+              </View>
+            </ScrollView>
+          </View>
+        </SafeAreaView>
       );
     }
   }
@@ -109,7 +129,7 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   // Carousel
   caro: {
-    paddingVertical: '0.5%',
+    paddingVertical: "0.5%",
     flex: 1,
     backgroundColor: "transparent",
     height: "20%",
@@ -139,7 +159,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
-    marginVertical: "0.6%"
+    marginVertical: "0.6%",
   },
   mic: {
     width: 50,
