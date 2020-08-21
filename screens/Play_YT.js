@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
-    marginVertical: "0.6%",
+   // marginVertical: "0.6%",
   },
   mic: {
     width: 50,
@@ -76,9 +76,9 @@ const styles = StyleSheet.create({
   },
   Player: {
     flex: 1,
-    width: width,
+    width: "100%",
     height: height / 3,
-    marginTop: "10%",
+    marginTop: "15%",
   },
 });
 
