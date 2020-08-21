@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Alert,StyleSheet,Text,View,TouchableOpacity,TextInput } from "react-native";
-import { CheckBox, Button, SocialIcon, Input } from "react-native-elements";
+import { CheckBox, Button, SocialIcon } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import ModalExample from "./privacy_policy";
 
