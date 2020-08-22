@@ -3,7 +3,7 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import CardItem from "./Basket_CardItem";
 
-const Card = ({ data }) => {
+const Card = ({ data, navigation }) => {
   if (data && data.length) {
     return (
       <View style={{ flex: 1, flexDirection: "row" }}>
@@ -18,7 +18,7 @@ const Card = ({ data }) => {
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => {
-            return <CardItem item={item} />;
+            return <CardItem item={item} navigation={navigation} />;
           }}
         />
       </View>

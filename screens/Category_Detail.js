@@ -58,7 +58,10 @@ export default class Basket extends React.Component {
                 <Icon name="microphone" size={24} color="red" />
               </TouchableOpacity>
             </View>
-            <Card data={this.state.category_data} />
+            <Card
+              data={this.state.category_data}
+              navigation={this.props.navigation}
+            />
           </View>
         </SafeAreaView>
       );

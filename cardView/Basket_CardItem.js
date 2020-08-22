@@ -12,12 +12,25 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 const { width, height } = Dimensions.get("window");
 
-const CardItem = ({ item }) => {
+const CardItem = ({ item, navigation }) => {
   return (
     <View style={styles.cardView}>
       {/* Card Image */}
       <View style={{ width: "100%", height: "90%" }}>
-        <Image style={styles.image} source={{ uri: item.imageUrl }} />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Product_Detail", {
+              id: item.id,
+              title: item.title,
+              image: item.imageUrl,
+              description: item.description,
+              price: item.price,
+              tax: item.tax,
+            });
+          }}
+        >
+          <Image style={styles.image} source={{ uri: item.imageUrl }} />
+        </TouchableOpacity>
       </View>
 
       {/* Add cart Icon */}

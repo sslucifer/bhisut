@@ -14,8 +14,8 @@ import Card from "../cardView/Basket_Card";
 import Header from "../screen_navigation/drawer_utils/Header";
 
 export default class Basket extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isloading: true,
       pack_data: [],
@@ -45,8 +45,11 @@ export default class Basket extends React.Component {
       return (
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.container}>
-            <Header />
-            <Card data={this.state.pack_data} />
+            <Header {...this.props} />
+            <Card
+              data={this.state.pack_data}
+              navigation={this.props.navigation}
+            />
           </View>
         </SafeAreaView>
       );
