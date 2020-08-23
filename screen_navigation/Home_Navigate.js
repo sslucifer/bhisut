@@ -19,6 +19,9 @@ import Category_Detail from "../screens/Category_Detail";
 import Product_Detail from "../screens/Product_Detail";
 import Play_YT from "../screens/Play_YT";
 
+import webview from "../webview/Webview";
+import Play_YT_2 from "../screens/Play_YT_2";
+import Play_YT_3 from "../screens/Play_YT_3";
 const HomeScreenStack = createStackNavigator({
   Home: {
     screen: Home,
@@ -40,6 +43,9 @@ const HomeScreenStack = createStackNavigator({
   },
   Play_YT: {
     screen: Play_YT,
+    navigationOptions: {
+      headerShown: false,
+    },
   },
 });
 
@@ -89,6 +95,24 @@ const ContentScreenStack = createStackNavigator({
       headerShown: false,
     },
   },
+  webview: {
+    screen: webview,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Play_YT_2: {
+    screen: Play_YT_2,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Play_YT_3: {
+    screen: Play_YT_3,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
 });
 const TabNavigator = createMaterialBottomTabNavigator(
   {
@@ -112,7 +136,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Product: {
       screen: createAppContainer(ProductScreenStack), //It is referencing to the LiveTv Page.
       navigationOptions: {
-        tabBarLabel: "Product",
+        tabBarLabel: "Healthy Food",
         tabBarIcon: ({ tintColor }) => (
           <View>
             <MaterialCommunityIcons

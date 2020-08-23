@@ -9,7 +9,7 @@ import {
 import YoutubePlayer from "react-native-youtube-iframe";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-import Card from "../cardView/Home_Card_Row3";
+import Card from "../cardView/Content_Card_Row2";
 import Header from "../screen_navigation/drawer_utils/Header";
 const { width, height } = Dimensions.get("window");
 

@@ -3,12 +3,10 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  Text,
   Image,
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -19,30 +17,13 @@ const CardItem = ({ item, navigation }) => {
         {/* Card Image */}
         <View style={{ width: "100%", height: "90%", padding: "2%" }}>
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("Product_Detail", {
-                id: item.variation_set[0]["id"],
-                title: item.title,
-                image: item.image,
-                description: item.description,
-                price: item.variation_set[0]["price"],
-                tax: item.tax,
-              });
-            }}
+            onPress={() =>
+              navigation.navigate("webview", { url: item.contenturl })
+            }
           >
-            <Image style={styles.image} source={{ uri: item.image }} />
-          </TouchableOpacity>
-          {/* Add cart Icon */}
-          <TouchableOpacity style={styles.TouchableOpacityStyleLeft}>
-            <Icon name="add-shopping-cart" size={20} color="black" />
+            <Image style={styles.image} source={{ uri: item.imgurl }} />
           </TouchableOpacity>
         </View>
-
-        {/* Pack Title */}
-        <Text style={styles.itemTitle}> {item.title}</Text>
-
-        {/* To add price tag uncomment the below line..
-      <Text style={styles.itemPrice}> {item.variation_set[0]["price"]}</Text> */}
       </View>
     </View>
   );
