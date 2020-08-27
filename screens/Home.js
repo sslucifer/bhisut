@@ -1,10 +1,12 @@
 //Home Page
 import React from "react";
 import {
+  Image,
   StyleSheet,
   View,
   ScrollView,
   StatusBar,
+  Dimensions,
   ActivityIndicator,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -16,6 +18,8 @@ import Card1 from "../cardView/Home_Card_Row1";
 import Card2 from "../cardView/Home_Card_Row2";
 import Card3 from "../cardView/Home_Card_Row3";
 import Header from "../screen_navigation/drawer_utils/Header";
+
+const { width, height } = Dimensions.get("window");
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -98,6 +102,10 @@ export default class Home extends React.Component {
                 </TouchableOpacity>
               </View>
               {/* Section 1 */}
+              <View style={styles.titleBx}>
+                <Image style={{width:"100%",height: "100%",resizeMode:"cover"}}
+                        source={require("../assets/organic.jpg")}/>
+              </View>
               <View style={styles.section}>
                 <Card1
                   data={this.state.category_data}
@@ -105,6 +113,10 @@ export default class Home extends React.Component {
                 />
               </View>
               {/* Section 2 */}
+              <View style={styles.titleBx2}>
+                <Image style={{width:"100%",height: "100%",resizeMode:"contain"}}
+                        source={require("../assets/deal.png")}/>
+              </View>
               <View style={styles.section}>
                 <Card2
                   data={this.state.product_data}
@@ -172,6 +184,19 @@ const styles = StyleSheet.create({
   },
   scrollview: {
     backgroundColor: "white",
+  },
+  titleBx: {
+    flex: 1, 
+    height: 80,
+    width: width, 
+    marginTop: "3%"
+  },
+  titleBx2: {
+    flex: 1, 
+    height: 80,
+    width: width, 
+    marginTop: "2%",
+    backgroundColor: "green"
   },
   section: {
     flex: 1,

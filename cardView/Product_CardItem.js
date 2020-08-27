@@ -1,6 +1,7 @@
 //This file is used to show the information on the individual Card.
 import React from "react";
 import {
+  Alert,
   View,
   StyleSheet,
   Text,
@@ -11,6 +12,22 @@ import {
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const { width, height } = Dimensions.get("window");
+
+const AlertExample = () => {
+  Alert.alert(
+    "Alert Title",
+    "My Alert Msg",
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ],
+    { cancelable: true }
+  );
+};
 
 const CardItem = ({ item, navigation }) => {
   return (
@@ -33,7 +50,8 @@ const CardItem = ({ item, navigation }) => {
             <Image style={styles.image} source={{ uri: item.image }} />
           </TouchableOpacity>
           {/* Add cart Icon */}
-          <TouchableOpacity style={styles.TouchableOpacityStyleLeft}>
+          <TouchableOpacity onPress={AlertExample}
+                            style={styles.TouchableOpacityStyleLeft}>
             <Icon name="add-shopping-cart" size={20} color="black" />
           </TouchableOpacity>
         </View>
@@ -65,7 +83,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
-    resizeMode: "cover",
+    resizeMode: "stretch",
   },
   itemPrice: {
     color: "white",

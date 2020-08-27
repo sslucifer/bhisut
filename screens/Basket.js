@@ -62,10 +62,4 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
-  container1: {
-    flex: 1,
-    alignContent: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
 });
