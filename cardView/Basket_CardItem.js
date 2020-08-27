@@ -1,6 +1,7 @@
 //This file is used to show the information on the individual Card.
 import React from "react";
 import {
+  Alert,
   View,
   StyleSheet,
   Text,
@@ -12,11 +13,27 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 const { width, height } = Dimensions.get("window");
 
+const AlertExample = () => {
+  Alert.alert(
+    "Alert Title",
+    "My Alert Msg",
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ],
+    { cancelable: true }
+  );
+};
+
 const CardItem = ({ item, navigation }) => {
   return (
     <View style={styles.cardView}>
       {/* Card Image */}
-      <View style={{ width: "100%", height: "90%" }}>
+      <View style={{ width: "100%", height: "90%", padding: "2%" }}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Product_Detail", {
@@ -34,8 +51,9 @@ const CardItem = ({ item, navigation }) => {
       </View>
 
       {/* Add cart Icon */}
-      <TouchableOpacity style={styles.TouchableOpacityStyleLeft}>
-        <Icon name="add-shopping-cart" size={23} color="white" />
+      <TouchableOpacity onPress={AlertExample}
+                        style={styles.TouchableOpacityStyleLeft}>
+        <Icon name="add-shopping-cart" size={20} color="black" />
       </TouchableOpacity>
 
       {/* Pack Title */}
@@ -50,20 +68,15 @@ const CardItem = ({ item, navigation }) => {
 const styles = StyleSheet.create({
   cardView: {
     flex: 1,
-    width: width - 120,
+    width: width / 2,
     height: height / 3,
-    backgroundColor: "steelblue",
+    backgroundColor: "#eeeeee",
     borderRadius: 10,
     shadowColor: "#000",
-    margin: 5,
     shadowOffset: { width: 0.5, height: 0.5 },
     shadowOpacity: 0.5,
     shadowRadius: 3,
     elevation: 5,
-  },
-
-  textView: {
-    textAlign: "center",
   },
   image: {
     width: "100%",
@@ -84,13 +97,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   itemTitle: {
-    color: "white",
+    color: "#607d8b",
     fontSize: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0.8, height: 0.8 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
-    marginBottom: 5,
+    marginVertical: 1,
     fontWeight: "bold",
     elevation: 5,
     textAlign: "center",
@@ -98,15 +107,15 @@ const styles = StyleSheet.create({
 
   TouchableOpacityStyleLeft: {
     position: "absolute",
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
     elevation: 6,
     right: "7%",
-    bottom: "10%",
-    backgroundColor: "#ab47bc",
+    bottom: "15%",
+    backgroundColor: "#eeeeee",
   },
 });
 

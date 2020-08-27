@@ -16,16 +16,14 @@ const CardItem = ({ data, item, navigation }) => {
     <View style={styles.cardView}>
       {/* Card Image */}
       <TouchableOpacity
+        style={{ width: "100%", height: "100%", padding: "1%" }}
         onPress={() => {
           navigation.navigate("Play_YT_2", {
             data: data,
             videoid: item.videoid,
           });
-        }}
-      >
-        <View style={{ width: "100%", height: "80%", padding: "1%" }}>
-          <Image style={styles.image} source={{ uri: item.imgurl }} />
-        </View>
+        }}>
+      <Image style={styles.image} source={{ uri: item.imgurl }} />
       </TouchableOpacity>
     </View>
   );
@@ -35,7 +33,7 @@ const styles = StyleSheet.create({
   cardView: {
     flex: 1,
     width: width - 180,
-    height: height / 3.5,
+    height: height / 4.3,
     backgroundColor: "#eeeeee",
     margin: 10,
     borderRadius: 10,

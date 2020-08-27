@@ -106,7 +106,7 @@ export default class Home extends React.Component {
               </View>
               {/* Section 1 */}
               <View style={styles.section}>
-                <Text style={styles.textFormat}>Blog and Article</Text>
+                <Text style={styles.textFormat}>BLOG & ARTICLE</Text>
                 <Card1
                   data={this.state.blog_data}
                   navigation={this.props.navigation}
@@ -114,7 +114,7 @@ export default class Home extends React.Component {
               </View>
               {/* Section 2 */}
               <View style={styles.section}>
-                <Text style={styles.textFormat}>Nutrition Fact</Text>
+                <Text style={styles.textFormat}>NUTRITION FACT</Text>
                 <Card2
                   data={this.state.nutrition_data}
                   navigation={this.props.navigation}
@@ -122,7 +122,7 @@ export default class Home extends React.Component {
               </View>
               {/* Section 3 */}
               <View style={styles.section}>
-                <Text style={styles.textFormat}>Food Channels</Text>
+                <Text style={styles.textFormat}>FOOD CHANNELS</Text>
                 <Card3
                   data={this.state.foodChannel_data}
                   navigation={this.props.navigation}
@@ -130,7 +130,7 @@ export default class Home extends React.Component {
               </View>
               {/* Section 4 */}
               <View style={styles.section}>
-                <Text style={styles.textFormat}>Food and Agriculture</Text>
+                <Text style={styles.textFormat}>FOOD & AGRICULTURE</Text>
                 <Card4
                   data={this.state.agricultural_data}
                   navigation={this.props.navigation}
@@ -162,25 +162,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#3BAD87",
-    paddingHorizontal: 18,
-    paddingTop: 5,
-  },
   scrollview: {
     backgroundColor: "white",
   },
   section: {
     flex: 1,
-    height: "10%",
-    textAlign: "center",
+    height: "15%",
+    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
+    marginVertical : 20
   },
   textFormat: {
-    marginLeft: "10%",
+    fontFamily: "monospace",
+    textShadowColor: '#9e9e9e',
+    textShadowOffset: { width: 1, height: 3 },
+    textShadowRadius: 5,
+    fontSize: 22,
   },
 });

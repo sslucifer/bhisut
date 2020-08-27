@@ -13,8 +13,7 @@ export default class HeaderNavigationBar extends Component {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-        }}
-      >
+        }}>
         <ImageBackground
           source={require("../../assets/welcome.jpg")}
           style={{
@@ -22,12 +21,10 @@ export default class HeaderNavigationBar extends Component {
             resizeMode: "fill",
             justifyContent: "center",
             height: "100%",
-          }}
-        >
+          }}>
           <TouchableOpacity
             onPress={() => this.props.navigation.openDrawer()}
-            style={{ paddingHorizontal: 20 }}
-          >
+            style={{ paddingHorizontal: 20 }}>
             <Icon name="bars" size={30} color="white"/>
           </TouchableOpacity>
         </ImageBackground>

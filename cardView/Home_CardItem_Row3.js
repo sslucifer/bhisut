@@ -16,17 +16,13 @@ const CardItem = ({ data, item, navigation }) => {
     <View style={styles.cardView}>
       {/* Card Image */}
       <TouchableOpacity
+        style={{ width: "100%", height: "80%", padding: "1%" }}
         onPress={() => {
           navigation.navigate("Play_YT", { data: data, videoid: item.videoid });
-        }}
-      >
-        <View style={{ width: "100%", height: "80%", padding: "1%" }}>
+        }}>
           <Image style={styles.image} source={{ uri: item.imgurl }} />
-        </View>
-        <View style={styles.textBx}>
-          <Text style={styles.itemTitle}> {item.title}</Text>
-        </View>
       </TouchableOpacity>
+      <Text style={styles.itemTitle}> {item.title}</Text>
     </View>
   );
 };
@@ -34,8 +30,10 @@ const CardItem = ({ data, item, navigation }) => {
 const styles = StyleSheet.create({
   cardView: {
     flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
     width: width - 180,
-    height: height / 3.5,
+    height: height / 3.2,
     backgroundColor: "#eeeeee",
     margin: 10,
     borderRadius: 10,
@@ -49,19 +47,14 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
-    resizeMode: "cover",
-  },
-  textBx: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    resizeMode: "stretch",
   },
   itemTitle: {
     color: "#607d8b",
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "bold",
-    elevation: 5,
     textAlign: "center",
+    //backgroundColor:"green"
   },
 });
 
